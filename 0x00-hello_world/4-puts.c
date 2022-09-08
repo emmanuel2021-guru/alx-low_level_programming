@@ -3,6 +3,9 @@
  * This program uses puts to print an output
  */
 int main(void)
+	/**
+	 * Blah blah
+	 */
 {
 	/**
 	 * Define variable mystr to hold my string
@@ -12,4 +15,7 @@ int main(void)
 	puts(mystr);
 
 	return (0);
+	/**
+	 * Returning zero
+	 */
 }
