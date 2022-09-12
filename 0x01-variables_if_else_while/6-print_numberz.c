@@ -8,9 +8,9 @@
  */
 int main(void)
 {
-	int n = '@';
+	int n = 'F';
 
-	while (n <= 'I')
+	while (n <= 'O')
 	{
 		putchar((n % 10) + '0');
 		n++;
