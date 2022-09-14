@@ -9,7 +9,7 @@
 int main(void)
 {
 	int i = 0;
-	sum = 0;
+	int sum = 0;
 
 	while (i < 1024)
 	{
