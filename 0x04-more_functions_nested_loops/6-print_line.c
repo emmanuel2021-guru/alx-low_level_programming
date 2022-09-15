@@ -2,6 +2,7 @@
 
 /**
  * print_line - Draws a straight line in the terminal.
+ * @n: Number or _ characters to be printed.
  */
 void print_line(int n)
 {
