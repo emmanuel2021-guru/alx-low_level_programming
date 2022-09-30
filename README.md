@@ -1,1 +1,1 @@
-This folder contains all alx low level programming projects
+This folder contains all the files relating to the argc argv project
