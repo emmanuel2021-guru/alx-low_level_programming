@@ -3,6 +3,7 @@
 
 /**
  * str_concat - Concatenates two strings.
+ * @s1: The string to be concatenated upon.
  * @s2: The string to be concatenated to s1.
  *
  * Return: If concatenation fails - NULL.
