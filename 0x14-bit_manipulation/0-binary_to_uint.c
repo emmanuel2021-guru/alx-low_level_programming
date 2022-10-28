@@ -31,7 +31,7 @@ unsigned int binary_to_uint(const char *b)
 			conv += 0;
 			doubler *= 2;
 		}
-		else 
+		else
 			return (0);
 	}
 
@@ -39,7 +39,7 @@ unsigned int binary_to_uint(const char *b)
 }
 
 /**
- * b_count - counts the number of characters in a string
+ * str_count - counts the number of characters in a string
  * @str: the string whose characters are to be counted
  *
  * Return: the number of characters in a string or
