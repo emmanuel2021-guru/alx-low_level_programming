@@ -8,29 +8,8 @@
  */
 void print_binary(unsigned long int n)
 {
-	unsigned long int result = 0, multiplier = 1;
+	if (n > 1)
+		print_binary(n >> 1);
 
-	while (n > 1)
-	{
-		if (n & 1)
-		{
-			result += multiplier;
-			multiplier *= 10;
-		}
-
-		else
-			multiplier *= 10;
-
-		n = n >> 1;
-	}
-
-	if (n & 1)
-	{
-		result += multiplier;
-		multiplier *= 10;
-	}
-	else
-		multiplier *= 10;
-
-	printf("%lu", result);
+	_putchar((n & 1) + '0');
 }
