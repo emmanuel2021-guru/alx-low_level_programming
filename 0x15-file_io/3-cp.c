@@ -14,37 +14,39 @@ int main(int ac, char **av)
 
 	if (ac != 3)
 	{
-		dprintf(2, "Usage: %s file_from file_to\n", av[0]);
+		dprintf(STDERR_FILENO, "Usage: %s file_from file_to\n", av[0]);
 		exit(97);
 	}
 	fd1 = open(av[1], O_RDONLY);
 	buf = malloc(sizeof(char) * 1024);
 	if (buf == NULL)
-		return (-1);
+	{
+		dprintf(STDERR_FILENO, "Can't write to %s\n", av[2]);
+	}
 	rd_cnt = read(fd1, buf, 1024);
-	if (rd_cnt == -1 || fd1 == -1)
+	fd2 = open(av[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
+	while (rd_cnt > 0)
 	{
-		dprintf(2, "Can't read from file %s\n", av[1]);
-		exit(98);
-	}
-	fd2 = open(av[2], O_CREAT | O_RDWR | O_TRUNC, 0674);
-	while (buf[index] != '\0')
-	{
-		len++;
-		index++;
-	}
-	wrt = write(fd2, buf, len);
-	if (wrt == -1 || fd2 == -1)
-	{
-		dprintf(2, "Can't write to %s\n", av[2]);
-		exit(99);
+		if (rd_cnt == -1 || fd1 == -1)
+		{
+			dprintf(STDERR_FILENO, "Can't read from file %s\n", av[1]);
+			exit(98);
+		}
+		wrt = write(fd2, buf, rd_cnt);
+		if (wrt == -1 || fd2 == -1)
+		{
+			dprintf(STDERR_FILENO, "Can't write to %s\n", av[2]);
+			exit(99);
+		}
+		rd_cnt = read(fd1, buf, 1024);
+		fd2 = open(av[2], O_WRONLY | O_APPEND);
 	}
 	free(buf);
 	clo1 = close(fd2);
 	clo2 = close(fd1);
 	if (clo2 == -1 || clo1 == -1)
 	{
-		dprintf(2, "Error: Can't close fd %d\n", fd2);
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd2);
 		exit(100);
 	}
 	return (0);
