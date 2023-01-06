@@ -31,6 +31,9 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	}
 	else
 	{
+		node->next = malloc(sizeof(ht->array[index]));
+		if (node == NULL)
+			return (0);
 		node->next = ht->array[index];
 	}
 
